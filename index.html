@@ -212,7 +212,7 @@
   const testSelect = document.querySelector('#testSelect').value;
 
   const fullName = `${firstName} ${lastName}`;
-
+  
   const createPerson = async (name, email, phone) => {
     const res = await fetch(`${BASE_URL}/persons?api_token=${API_TOKEN}`, {
       method: 'POST',
@@ -267,6 +267,13 @@
     alert('Error creating deal: ' + JSON.stringify(result));
   }
   };
+
+  try {
+  const personId = await createPerson(fullName, email, phone);
+  await createDeal(personId);
+} catch (error) {
+  alert('Error: ' + error.message);
+}
 });
 
 </script>
