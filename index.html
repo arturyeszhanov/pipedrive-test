@@ -181,7 +181,6 @@
   const API_TOKEN = '0b975fa83ba4acfb3af3d1c670bd7f9ae938d53d';
   const BASE_URL = 'https://api.pipedrive.com/v1';
 
-  // Валидация
   const required = document.querySelectorAll('.required');
   let valid = true;
   required.forEach(field => {
@@ -197,6 +196,7 @@
   const lastName = document.querySelector('#lastName').value.trim();
   const phone = document.querySelector('#phone').value.trim();
   const email = document.querySelector('#email').value.trim();
+
   const jobType = document.querySelector('#jobType').value;
   const jobSource = document.querySelector('#jobSource').value;
   const jobDesc = document.querySelector('#jobDesc').value.trim();
@@ -205,21 +205,13 @@
   const state = document.querySelector('#state').value.trim();
   const zip = document.querySelector('#zip').value.trim();
   const area = document.querySelector('#area').value;
+  
   const startDate = document.querySelector('#startDate').value;
   const startTime = document.querySelector('#startTime').value.trim();
   const endTime = document.querySelector('#endTime').value.trim();
   const testSelect = document.querySelector('#testSelect').value;
 
   const fullName = `${firstName} ${lastName}`;
-
-  const searchPerson = async (term) => {
-    const res = await fetch(`${BASE_URL}/persons/search?term=${encodeURIComponent(term)}&api_token=${API_TOKEN}`);
-    const result = await res.json();
-    if (result.success && result.data.items.length > 0) {
-      return result.data.items[0].item.id;
-    }
-    return null;
-  };
 
   const createPerson = async (name, email, phone) => {
     const res = await fetch(`${BASE_URL}/persons?api_token=${API_TOKEN}`, {
@@ -275,13 +267,6 @@
     alert('Error creating deal: ' + JSON.stringify(result));
   }
   };
-
-  try {
-  const personId = await createPerson(fullName, email, phone);
-  await createDeal(personId);
-} catch (error) {
-  alert('Error: ' + error.message);
-}
 });
 
 </script>
