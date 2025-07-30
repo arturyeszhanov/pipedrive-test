@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEW create a job</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      background-color: #f7f9fc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container-form {
+      max-width: 920px;
+      width: 100%;
+    }
+
+    .card {
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-form">
+    <h1>NEW create a job</h1>
+  
+    <form id="dealForm">
+      <div class="row g-4">
+  
+        <!-- Client details -->
+        <div class="col-md-6">
+          <div class="card pb-2 h-100">
+            <div class="card-body">
+              <h5 class="card-title pb-2">Client details</h5>
+              <div class="d-flex gap-2 mb-3">
+                <input type="text" class="form-control required" id="firstName" name="firstName" placeholder="First name" />
+                <input type="text" class="form-control required" id="lastName" name="lastName" placeholder="Last name" />
+              </div>
+              <input type="tel" class="form-control required mb-3" id="phone" name="phone" placeholder="Phone" />
+              <input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email (optional)" />
+            </div>
+          </div>
+        </div>
+  
+        <!-- Job details -->
+        <div class="col-md-6">
+          <div class="card pb-2 h-100">
+            <div class="card-body">
+              <h5 class="card-title pb-2">Job details</h5>
+              <div class="d-flex gap-2 mb-2">
+                <select class="form-select required" id="jobType" name="jobType">
+                  <option value="" selected disabled hidden>Job Type</option>
+                  <option value="28">Electrical</option>
+                  <option value="27">Plumbing</option>
+                  <option value="29">Cleaning</option>
+                  <option value="30">Painting</option>
+                  <option value="31">Other</option>
+                </select>
+                <select class="form-select required" id="jobSource" name="jobSource">
+                  <option value="" selected disabled hidden>Job source</option>
+                  <option value="44">Repeat Customer</option>
+                  <option value="45">Referral</option>
+                  <option value="46">Facebook</option>
+                  <option value="47">Website</option>
+                  <option value="48">Other</option>
+                </select>
+              </div>
+              <textarea class="form-control" id="jobDesc" name="jobDesc" rows="3" placeholder="Job description (optional)"></textarea>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Service location -->
+        <div class="col-md-6">
+          <div class="card pb-2 h-100">
+            <div class="card-body">
+              <h5 class="card-title pb-2">Service location</h5>
+              <input type="text" class="form-control required mb-3" id="address" name="address" placeholder="Address">
+              <input type="text" class="form-control required mb-3" id="city" name="city" placeholder="City">
+              <input type="text" class="form-control required mb-3" id="state" name="state" placeholder="State">
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip code">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <select class="form-select" id="area" name="area">
+                    <option selected disabled>Area</option>
+                    <option value="32">North</option>
+                    <option value="33">South</option>
+                    <option value="34">East</option>
+                    <option value="35">West</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Scheduled -->
+        <div class="col-md-6">
+          <div class="card pb-2 h-100">
+            <div class="card-body">
+              <h5 class="card-title pb-2">Scheduled</h5>
+              <div class="mb-3 input-group">
+                <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start date">
+                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="startTime" name="startTime" placeholder="Start Time">
+                    <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="endTime" name="endTime" placeholder="End Time">
+                    <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                  </div>
+                </div>
+              </div>
+              <select class="form-select" id="testSelect" name="testSelect">
+                <option selected disabled>Test select</option>
+                <option value="36">Option 1</option>
+                <option value="37">Option 2</option>
+                <option value="38">Option 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </form>
+  
+    <div class="d-flex gap-2 mt-4 justify-content-center">
+      <button id="createJob" class="btn btn-lg btn-primary" type="submit">Create Job</button>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#startDate", {
+    dateFormat: "Y-m-d"
+  });
+
+  flatpickr("#startTime", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    allowInput: true
+  });
+
+  flatpickr("#endTime", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    allowInput: true
+  });
+
+  document.getElementById('createJob').addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  const API_TOKEN = '0b975fa83ba4acfb3af3d1c670bd7f9ae938d53d';
+  const BASE_URL = 'https://api.pipedrive.com/v1';
+
+  // Валидация
+  const required = document.querySelectorAll('.required');
+  let valid = true;
+  required.forEach(field => {
+    if (!field.value.trim()) {
+      field.classList.add('is-invalid');
+      valid = false;
+    } else {
+      field.classList.remove('is-invalid');
+    }
+  });
+
+  const firstName = document.querySelector('#firstName').value.trim();
+  const lastName = document.querySelector('#lastName').value.trim();
+  const phone = document.querySelector('#phone').value.trim();
+  const email = document.querySelector('#email').value.trim();
+  const jobType = document.querySelector('#jobType').value;
+  const jobSource = document.querySelector('#jobSource').value;
+  const jobDesc = document.querySelector('#jobDesc').value.trim();
+  const address = document.querySelector('#address').value.trim();
+  const city = document.querySelector('#city').value.trim();
+  const state = document.querySelector('#state').value.trim();
+  const zip = document.querySelector('#zip').value.trim();
+  const area = document.querySelector('#area').value;
+  const startDate = document.querySelector('#startDate').value;
+  const startTime = document.querySelector('#startTime').value.trim();
+  const endTime = document.querySelector('#endTime').value.trim();
+  const testSelect = document.querySelector('#testSelect').value;
+
+  const fullName = `${firstName} ${lastName}`;
+
+  const searchPerson = async (term) => {
+    const res = await fetch(`${BASE_URL}/persons/search?term=${encodeURIComponent(term)}&api_token=${API_TOKEN}`);
+    const result = await res.json();
+    if (result.success && result.data.items.length > 0) {
+      return result.data.items[0].item.id;
+    }
+    return null;
+  };
+
+  const createPerson = async (name, email, phone) => {
+    const res = await fetch(`${BASE_URL}/persons?api_token=${API_TOKEN}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email: [{ value: email, primary: true }],
+        phone: [{ value: phone, primary: true }]
+      })
+    });
+    const result = await res.json();
+    if (result.success) return result.data.id;
+    throw new Error('Failed to create contact');
+  };
+
+  const createDeal = async (personId) => {
+    const dealData = {
+      title: `Job for ${fullName}`,
+      person_id: personId,
+
+      '5e771cc04ff8c6bbbde072db91e0cc4b0b90178a': jobType,
+      '5bd5612f842d4e5626a90f4af0543a631743d621': jobSource,
+      'c4c4338be946f9d0936ae1eb0273d0d73f2449d2': jobDesc,
+
+      '55b9b156efc6aca655883a7ee2a4ec7056833be0': address,
+      'd59cebb380023404ab514814199740c5341bbe90': city,
+      'b7f9fa0e742bfb04b92fd572c861d4cdc14ce4ba': state,
+      '0790c802fe69a924f57eaa12b2f6b886ae2dafed': zip,
+      '3865b7cee9acd919d33bbf8bc8438b246008356a': area,
+
+      '8e041430223533d9def8793afa24a9661899d35a': startDate,
+      '186f1b73f4ff7cf9dd6f5a3aa1f33e23edde9a55': startTime,
+      '575b98fbb3fef23ea98981f1c458310f86f1a43b': endTime,
+      'b98dd0e00aea5efd3b6d43e2415bdc93634f08bf': testSelect
+    };
+
+    const res = await fetch(`${BASE_URL}/deals?api_token=${API_TOKEN}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dealData)
+    });
+    
+    const result = await res.json();
+
+    if (result.success) {
+    document.body.innerHTML = `
+      <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <h1 style="font-family: sans-serif; color: green;">Job is created!</h1>
+      </div>
+    `;
+  } else {
+    alert('Error creating deal: ' + JSON.stringify(result));
+  }
+  };
+
+  try {
+  const personId = await createPerson(fullName, email, phone);
+  await createDeal(personId);
+} catch (error) {
+  alert('Error: ' + error.message);
+}
+});
+
+</script>
+</body>
+</html>
